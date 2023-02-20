@@ -21,6 +21,7 @@ You can expect this happen in late february 2023. Stay tuned!
 - a simple line is showing the direction the player is moving
 - obstacle placing follows simple rules to always match the game area and let enough space for the player to move around them
 - obstacles have random sprites from the sprite sheet and thus more variance
+- add basic collision detection between player and obstacles and display a collision to the js console
 ## How to run this game
 Just try it [online](https://erikuckert.github.io/js-animation-game/) or clone to your local drive and open the [index.html](index.html) with your webbrowser.
 
