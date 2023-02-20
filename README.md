@@ -18,6 +18,7 @@ You can expect this happen in late february 2023. Stay tuned!
 - random obstacles (also placeholder circles)
 - player can move with the mouse by clicking on the map or holding the mouse button down
 - a simple line is showing the direction the player is moving
+- obstacle placing follows simple rules to always match the game area and let enough space for the player to move around them 
 ## How to run this game
 Just try it [online](https://erikuckert.github.io/js-animation-game/) or clone to your local drive and open the [index.html](index.html) with your webbrowser.
 
