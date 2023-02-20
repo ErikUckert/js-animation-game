@@ -5,7 +5,8 @@ This repository containes the code for a nice and fun browser game, entirely wri
 It will have nice sprites, animations and even simple physics.
 
 ## State of the game
-**PRE-ALPHA**
+<span style="color:#FF5733">**PRE-ALPHA**</span>
+
 Currently there is now playable version of the game.
 You can open it and maybe move things around but there is no actual game right now.
 
