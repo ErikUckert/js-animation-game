@@ -22,6 +22,7 @@ You can expect this happen in late february 2023. Stay tuned!
 - obstacle placing follows simple rules to always match the game area and let enough space for the player to move around them
 - obstacles have random sprites from the sprite sheet and thus more variance
 - add basic collision detection between player and obstacles and display a collision to the js console
+- simulate basic physics by making obstacles solid and let player move around them automaticaly instead of crossing them
 ## How to run this game
 Just try it [online](https://erikuckert.github.io/js-animation-game/) or clone to your local drive and open the [index.html](index.html) with your webbrowser.
 
