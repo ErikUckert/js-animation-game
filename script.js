@@ -80,6 +80,20 @@ window.addEventListener('load', function(){
             // update the player sprite position
             this.spriteX = this.collisionX - this.width * 0.5;
             this.spriteY = this.collisionY - this.height * 0.5 - 100;
+            // set horizontal boundaries for player movement
+            if (this.collisionX < this.collisionRadius) {
+                this.collisionX = this.collisionRadius;
+            }
+            else if (this.collisionX > this.game.width - this.collisionRadius) {
+                this.collisionX = this.game.width - this.collisionRadius;
+            }
+            // set vertical boundaries for player movement
+            if (this.collisionY < this.game.topMargin - this.collisionRadius) {
+                this.collisionY = this.game.topMargin - this.collisionRadius;
+            }
+            else if (this.collisionY > this.game.height - this.collisionRadius) {
+                this.collisionY = this.game.height - this.collisionRadius;
+            }
             // check for collision with obstacles
             this.game.obstacles.forEach(obstacle => {
                 let [collision, distance, sumOfRadii, dx, dy] = this.game.checkCollision(this, obstacle);
