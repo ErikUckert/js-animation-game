@@ -26,10 +26,13 @@ window.addEventListener('load', function(){
             this.height = this.spriteHeight;
             this.spriteX;
             this.spriteY;
+            this.frameX = 0;
+            this.frameY = 0;
+            this.angle = 0;
         };
         draw(context){
             // code for drawing the player sprite
-            context.drawImage(this.image, 0, 0, this.spriteWidth, this.spriteHeight, this.spriteX, this.spriteY, this.width, this.height);
+            context.drawImage(this.image, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.spriteX, this.spriteY, this.width, this.height);
             // code for drawing the circle
             context.beginPath();
             context.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI * 2);
@@ -45,9 +48,21 @@ window.addEventListener('load', function(){
             context.stroke();
         };
         update(){
-            // updating the players position
+            // animation of the player sprite
             this.dX = this.game.mouse.x - this.collisionX;
             this.dY = this.game.mouse.y - this.collisionY;
+            this.angle = Math.atan2(this.dY, this.dX);
+            if (this.angle < -2.74 || this.angle > 2.74) {this.frameY = 6}
+            else if (this.angle < -1.96) {this.frameY = 7}
+            else if (this.angle < -1.17) {this.frameY = 0}
+            else if (this.angle < -0.39) {this.frameY = 1}
+            else if (this.angle < 0.39) {this.frameY = 2}
+            else if (this.angle < 1.17) {this.frameY = 3}
+            else if (this.angle < 1.96) {this.frameY = 4}
+            else if (this.angle < 2.74) {this.frameY = 5}
+            
+            // updating the players position
+
             const distance = Math.hypot(this.dY, this.dX);
             // make sure player moves always at const speed
             if (distance > this.speedModifier){
@@ -57,10 +72,12 @@ window.addEventListener('load', function(){
                 this.speedX = 0;
                 this.speedY = 0;
             }
+            // update the new hitbox circle position
             this.collisionX += this.speedX * this.speedModifier;
             this.collisionY += this.speedY * this.speedModifier;
+            // update the player sprite position
             this.spriteX = this.collisionX - this.width * 0.5;
-            this.spriteY = this.collisionY - this.height * 0.5;
+            this.spriteY = this.collisionY - this.height * 0.5 - 100;
             // check for collision with obstacles
             this.game.obstacles.forEach(obstacle => {
                 let [collision, distance, sumOfRadii, dx, dy] = this.game.checkCollision(this, obstacle);
