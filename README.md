@@ -13,8 +13,13 @@ You can open it and maybe move things around but there is no actual game right n
 The next state will be the **ALPHA** state. Here you can expect basic gameplay (limited to core principles and with lots of bugs) for the first time.
 You can expect this happen in late february 2023. Stay tuned!
 
-### Detailed list of features in current state
-Updates 20.02.2023
+## Changelog
+
+**Updates 21.02.2023**
+- a simple static sprite for the player character "blue bull" centered over the player hitbox circle
+- Animated sprite for the player character for eight directions while moving
+
+**Updates 20.02.2023**
 - Fantasy themed background (magic forrest sprite)
 - a player placeholder circle spawning in the middle of the map
 - random obstacles (also placeholder circles)
@@ -24,9 +29,6 @@ Updates 20.02.2023
 - obstacles have random sprites from the sprite sheet and thus more variance
 - basic collision detection between player and obstacles and display a collision to the js console
 - simulate basic physics by making obstacles solid and let player move around them automaticaly instead of crossing them
-Updates 21.02.2023
-- a simple static sprite for the player character "blue bull" centered over the player hitbox circle
-- Animated sprite for the player character for eight directions while moving
 
 ## How to run this game
 Just try it [online](https://erikuckert.github.io/js-animation-game/) or clone to your local drive and open the [index.html](index.html) with your webbrowser.
