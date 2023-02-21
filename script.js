@@ -144,9 +144,10 @@ window.addEventListener('load', function(){
     class Egg {
         constructor(game){
             this.game = game;
-            this.collisionX = Math.random() * this.game.width;
-            this.collisionY = Math.random() * this.game.height;
             this.collisionRadius = 40;
+            this.margin = this.collisionRadius * 2
+            this.collisionX = this.margin + (Math.random() * (this.game.width - this.margin * 2));
+            this.collisionY = this.margin + this.game.topMargin + (Math.random() * (this.game.height - this.margin * 2 - this.game.topMargin));
             this.image = document.getElementById('egg');
             this.spriteWidth = 110;
             this.spriteHeight = 135;
