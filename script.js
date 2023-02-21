@@ -34,13 +34,15 @@ window.addEventListener('load', function(){
             // code for drawing the player sprite
             context.drawImage(this.image, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.spriteX, this.spriteY, this.width, this.height);
             // code for drawing the circle
-            context.beginPath();
-            context.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI * 2);
-            context.save();
-            context.globalAlpha = 0.5;
-            context.fill();
-            context.restore();
-            context.stroke();
+            if (this.game.debug == true) {
+                context.beginPath();
+                context.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI * 2);
+                context.save();
+                context.globalAlpha = 0.5;
+                context.fill();
+                context.restore();
+                context.stroke();   
+            }
             // code for drawing the line of direction
             context.beginPath();
             context.moveTo(this.collisionX, this.collisionY);
@@ -82,7 +84,6 @@ window.addEventListener('load', function(){
             this.game.obstacles.forEach(obstacle => {
                 let [collision, distance, sumOfRadii, dx, dy] = this.game.checkCollision(this, obstacle);
                 if (collision) {
-                    console.log(this.game.checkCollision(this, obstacle));
                     const unit_x = dx / distance;
                     const unit_y = dy / distance;
                     const pushBackValue = sumOfRadii + 1;
@@ -114,13 +115,15 @@ window.addEventListener('load', function(){
             // drawing the obstacle sprite from the sprite sheet
             context.drawImage(this.image, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.spriteX, this.spriteY, this.width, this.height);
             // code for drawing the circle
-            context.beginPath();
-            context.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI * 2);
-            context.save();
-            context.globalAlpha = 0.5;
-            context.fill();
-            context.restore();
-            context.stroke();
+            if (this.game.debug == true) {
+                context.beginPath();
+                context.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI * 2);
+                context.save();
+                context.globalAlpha = 0.5;
+                context.fill();
+                context.restore();
+                context.stroke();   
+            }
         };
     }
 
@@ -132,6 +135,7 @@ window.addEventListener('load', function(){
             this.topMargin = 260;
             this.bottomMargin = 50;
             this.pathMargin = 60;
+            this.debug = true;
             this.player = new Player(this);
             this.noOfObstacles = 10;
             this.obstacles = [];
@@ -161,6 +165,11 @@ window.addEventListener('load', function(){
                 if (this.mouse.pressed){
                     this.mouse.x = e.offsetX;
                     this.mouse.y = e.offsetY;
+                }
+            })
+            window.addEventListener('keydown', (e) => {
+                if (e.key == 'd') {
+                    this.debug = !this.debug;
                 }
             })
         };
@@ -208,7 +217,6 @@ window.addEventListener('load', function(){
 
     const game = new Game(canvas);
     game.init();
-    console.log(game);
 
     function animate(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);

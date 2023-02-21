@@ -16,8 +16,9 @@ You can expect this happen in late february 2023. Stay tuned!
 ## Changelog
 
 **Updates 21.02.2023**
-- a simple static sprite for the player character "blue bull" centered over the player hitbox circle
+- Add a simple static sprite for the player character "blue bull" centered over the player hitbox circle
 - Animated sprite for the player character for eight directions while moving
+- Simple debug mode - by pressing "D" in keyboard the player can hide / show the hitboxes
 
 **Updates 20.02.2023**
 - Fantasy themed background (magic forrest sprite)
