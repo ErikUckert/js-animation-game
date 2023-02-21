@@ -21,7 +21,7 @@ window.addEventListener('load', function(){
             this.speedModifier = 5;
             this.image = document.getElementById("bull");
             this.spriteWidth = 255;
-            this.spriteHeight = 255;
+            this.spriteHeight = 256;
             this.width = this.spriteWidth;
             this.height = this.spriteHeight;
             this.spriteX;
