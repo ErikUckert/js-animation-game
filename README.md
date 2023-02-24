@@ -17,6 +17,7 @@ You can expect this happen in late february 2023. Stay tuned!
 
 **Updates 24.02.2023**
 - Eggs have collision physics & can be pushed around by the player
+- game objects like obstacles, player or eggs are drawn based on the vertical position, so that a 3D illusion is created
 
 **Updates 21.02.2023**
 - Add a simple static sprite for the player character "blue bull" centered over the player hitbox circle
