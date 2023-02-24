@@ -15,6 +15,9 @@ You can expect this happen in late february 2023. Stay tuned!
 
 ## Changelog
 
+**Updates 24.02.2023**
+- Eggs have collision physics & can be pushed around by the player
+
 **Updates 21.02.2023**
 - Add a simple static sprite for the player character "blue bull" centered over the player hitbox circle
 - Animated sprite for the player character for eight directions while moving
