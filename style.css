@@ -21,6 +21,6 @@
 
 }
 
-#obstacles, #bull, #egg{
+#obstacles, #bull, #egg, #enemy {
     display: none;
 }

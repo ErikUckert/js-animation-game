@@ -19,7 +19,7 @@ window.addEventListener('load', function(){
             this.dX = 0;
             this.dY = 0;
             this.speedModifier = 5;
-            this.image = document.getElementById("bull");
+            this.image = document.getElementById('bull');
             this.spriteWidth = 255;
             this.spriteHeight = 256;
             this.width = this.spriteWidth;
@@ -108,7 +108,6 @@ window.addEventListener('load', function(){
             })
         };
     }
-
     class Obstacle {
         constructor(game){
             this.game = game;
@@ -143,7 +142,6 @@ window.addEventListener('load', function(){
             // add animation here later
         };
     }
-
     class Egg {
         constructor(game){
             this.game = game;
@@ -188,7 +186,44 @@ window.addEventListener('load', function(){
             })
         };
     }
-
+    class Enemy {
+        constructor(game) {
+            this.game = game;
+            this.collisionRadius = 30;
+            this.speedX = Math.random() * 3 + 0.5;
+            this.image = document.getElementById('enemy');
+            this.spriteHeight = 260;
+            this.spriteWidth = 140;
+            this.width = this.spriteWidth;
+            this.height = this.spriteHeight;
+            this.collisionX = this.game.width + this.width + Math.random() * this.game.width * 0.5;
+            this.collisionY = this.game.topMargin + (Math.random() * (this.game.height - this.game.topMargin));
+            this.spriteX;
+            this.spriteY;
+        };
+        draw(context){
+            context.drawImage(this.image, this.spriteX, this.spriteY);
+            // code for drawing the circle
+            if (this.game.debug == true) {
+                context.beginPath();
+                context.arc(this.collisionX, this.collisionY, this.collisionRadius, 0, Math.PI * 2);
+                context.save();
+                context.globalAlpha = 0.5;
+                context.fill();
+                context.restore();
+                context.stroke();   
+            }
+        };
+        update(){
+            this.spriteX = this.collisionX - this.width * 0.5;
+            this.spriteY = this.collisionY - this.height * 0.5 - 100;
+            this.collisionX -= this.speedX;
+            if (this.spriteX + this.width < 0) {
+                this.collisionX = this.game.width + this.width + Math.random() * this.game.width * 0.5;
+                this.collisionY = this.game.topMargin + (Math.random() * (this.game.height - this.game.topMargin));
+            }
+        };
+    }
     class Game {
         constructor(canvas){
             this.canvas = canvas;
@@ -209,12 +244,12 @@ window.addEventListener('load', function(){
             this.eggInterval = 1000;
             this.maxEggs = 10;
             this.eggs = [];
+            this.enemies = [];
             this.mouse = {
                 x: this.width * 0.5,
                 y: this.height * 0.5,
                 pressed: false
             }
-
             // event listeners
             canvas.addEventListener('mousedown', (e) => {
                 // using an arrow function -- (e) => {} -- here allows me to access
@@ -246,7 +281,7 @@ window.addEventListener('load', function(){
         render(context, deltaTime){
             if (this.timer > this.interval) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                this.gameObjects = [...this.eggs, ...this.obstacles, this.player];
+                this.gameObjects = [...this.eggs, ...this.obstacles, ...this.enemies, this.player];
                 // sort game objects by vertical position
                 this.gameObjects.sort((a, b) => {
                     return a.collisionY - b.collisionY;
@@ -267,21 +302,26 @@ window.addEventListener('load', function(){
             else {
                 this.eggTimer += deltaTime;
             }
-        }
-
+        };
         checkCollision(a, b){
             const dx = a.collisionX - b.collisionX;
             const dy = a.collisionY - b.collisionY;
             const distance = Math.hypot(dy, dx);
             const sumOfRadii = a.collisionRadius + b.collisionRadius;
             return [(distance < sumOfRadii), distance, sumOfRadii, dx, dy];
-        }
-
+        };
         addEgg(){
             this.eggs.push(new Egg(this));
-        }
-
+        };
+        addEnemy(){
+            this.enemies.push(new Enemy(this));
+        };
         init(){
+        // init the enemies
+        for (let index = 0; index < 3; index++) {
+            this.addEnemy();
+            
+        }
         // init the obstacles with a simple "brute force approach"
         let attempts = 0;
         while (this.obstacles.length < this.noOfObstacles && attempts < 500) {
@@ -308,10 +348,8 @@ window.addEventListener('load', function(){
         }
         };
     }
-
     const game = new Game(canvas);
     game.init();
-
     // animation loop
     let lastTime = 0;
     function animate(timeStamp){
@@ -320,6 +358,5 @@ window.addEventListener('load', function(){
         game.render(ctx, deltaTime);
         window.requestAnimationFrame(animate);
     }
-
     animate(0);
 })
