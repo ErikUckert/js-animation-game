@@ -5,15 +5,27 @@ This repository containes the code for a nice and fun browser game, entirely wri
 It will have nice sprites, animations and even simple physics.
 
 ## State of the game
-<span style="color:#FF5733">**PRE-ALPHA**</span>
+<span style="color:#FF5733">**ALPHA**</span>
 
-Currently there is now playable version of the game.
-You can open it and maybe move things around but there is no actual game right now.
+Currently there is a very basic version of the game.
+You can open it and maybe move things around but there is very limited actual gameplay right now.
+You can try to move the eggs and also bully the enemies as they try to reach the left side of the map.
 
-The next state will be the **ALPHA** state. Here you can expect basic gameplay (limited to core principles and with lots of bugs) for the first time.
-You can expect this happen in late february 2023. Stay tuned!
+The next state will be the **BETA** state. Here you can expect basic gameplay (limited to core principles and with lots of bugs) for the first time.
+
+**Expect new features**
+- Larvas will hatch from eggs!
+- Your goal is to protect these larvas - why? Because green watcher enemies likes larvas, yummmi! :meat_on_bone:
+
+You can expect this happen in march 2023. Stay tuned!
 
 ## Changelog
+
+**Updates 02.03.2023**
+- Enemies gets simple physics & react to obstacles: 
+    - Pushing eggs around
+    - find their way around obstacles
+    - can be pushed by the player
 
 **Updates 24.02.2023**
 - Eggs have collision physics & can be pushed around by the player
