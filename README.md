@@ -26,6 +26,13 @@ You can expect this happen in march 2023. Stay tuned!
     - Pushing eggs around
     - find their way around obstacles
     - can be pushed by the player
+- Welcome to the larvas!
+
+![Larva Image](./src/larva_4.png) 
+
+- They are now hatching from the eggs and try to find there way to the forrest.
+- They ignore obstacles for now and directly move the upper region of the game map
+- Two debug features for these larvas where added - a hatchtimer and their collision circles
 
 **Updates 24.02.2023**
 - Eggs have collision physics & can be pushed around by the player
