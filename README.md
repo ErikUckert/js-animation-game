@@ -26,7 +26,7 @@ You can expect this happen in march 2023. Stay tuned!
 - Green watcher enemies can (and will!) eat our precious larvas on contact
 - A basic score board is available - when larvas reach the safe and cosy forrest, you get one point
 
-**Updates 02.03.2023**
+**Updates 02.03.2023 ALPHA RELEASE**
 - Enemies gets simple physics & react to obstacles: 
     - Pushing eggs around
     - find their way around obstacles
