@@ -396,6 +396,9 @@ window.addEventListener('load', function(){
             context.save();
             context.textAlign = 'left';
             context.fillText('Score' + ' ' + this.score, 25, 50);
+            if (this.debug) {
+                context.fillText('Lost Hatchlings' + ' ' + this.lostHatchlings, 25, 100);
+            }
             context.restore();
         };
         checkCollision(a, b){
