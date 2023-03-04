@@ -288,7 +288,27 @@ window.addEventListener('load', function(){
             if (this.collisionY < this.game.topMargin) {
                 this.markedForDeletion = true;
                 this.game.removeGameObjects();
+                this.game.score++;
             }
+            // collision handling (objects)
+            let collisionObjects = [this.game.player, ...this.game.obstacles];
+            collisionObjects.forEach(object => {
+                let [collision, distance, sumOfRadii, dx, dy] = this.game.checkCollision(this, object);
+                if (collision) {
+                    let unit_x = dx / distance;
+                    let unit_y = dy / distance;
+                    this.collisionX = object.collisionX + (sumOfRadii + 1) * unit_x;
+                    this.collisionY = object.collisionY + (sumOfRadii + 1) * unit_y;                    
+                }
+            })
+            // collision handling (enemies)
+            this.game.enemies.forEach(enemy =>{
+                if (this.game.checkCollision(this, enemy)[0]) {
+                    this.markedForDeletion = true;
+                    this.game.removeGameObjects();
+                    this.game.lostHatchlings++;
+                }
+            });
         }
     }
     class Game {
@@ -302,6 +322,8 @@ window.addEventListener('load', function(){
             this.debug = true;
             this.fps = 70;
             this.timer = 0;
+            this.score = 0;
+            this.lostHatchlings = 0;
             this.interval = 1000/this.fps;
             this.gameObjects = [];
             this.player = new Player(this);
