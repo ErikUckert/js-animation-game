@@ -24,6 +24,7 @@ You can expect this happen in march 2023. Stay tuned!
 **Updates 04.03.2023**
 - Larvas are now get physics and react to obstacles (player can push them around like eggs)
 - Green watcher enemies can (and will!) eat our precious larvas on contact
+- A basic score board is available - when larvas reach the safe and cosy forrest, you get one point
 
 **Updates 02.03.2023**
 - Enemies gets simple physics & react to obstacles: 

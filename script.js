@@ -392,6 +392,11 @@ window.addEventListener('load', function(){
             else {
                 this.eggTimer += deltaTime;
             }
+            // draw status text for score
+            context.save();
+            context.textAlign = 'left';
+            context.fillText('Score' + ' ' + this.score, 25, 50);
+            context.restore();
         };
         checkCollision(a, b){
             const dx = a.collisionX - b.collisionX;
