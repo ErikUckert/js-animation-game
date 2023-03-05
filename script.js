@@ -291,7 +291,6 @@ window.addEventListener('load', function(){
                 this.game.score++;
                 for (let index = 0; index < 3; index++) {
                     this.game.particles.push(new Firefly(this.game, this.collisionX, this.collisionY, 'yellow'));
-                    
                 }
             }
             // collision handling (objects)
@@ -311,6 +310,9 @@ window.addEventListener('load', function(){
                     this.markedForDeletion = true;
                     this.game.removeGameObjects();
                     this.game.lostHatchlings++;
+                    for (let index = 0; index < 5; index++) {
+                        this.game.particles.push(new Spark(this.game, this.collisionX, this.collisionY, 'red'));
+                    }
                 }
             });
         }
@@ -341,7 +343,7 @@ window.addEventListener('load', function(){
     class Firefly extends Particle {
         update(){
             this.angle += this.va;
-            this.collisionX += this.speedX;
+            this.collisionX += Math.cos(this.angle) * this.speedX;
             this.collisionY -= this.speedY;
             if (this.collisionY < 0 - this.radius) {
                 this.markedForDeletion = true;
@@ -350,7 +352,18 @@ window.addEventListener('load', function(){
         }
     }
     class Spark extends Particle {
-
+        update(){
+            this.angle += this.va * 0.5;
+            this.collisionX -= Math.cos(this.angle) * this.speedX;
+            this.collisionY -= Math.sin(this.angle) * this.speedY;
+            if (this.radius > 0.1) {
+                this.radius -= 0.05;
+            }
+            if (this.radius < 0.2) {
+                this.markedForDeletion = true;
+                this.game.removeGameObjects();
+            }
+        }
     }
     class Game {
         constructor(canvas){
