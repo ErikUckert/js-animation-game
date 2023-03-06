@@ -5,13 +5,12 @@ This repository containes the code for a nice and fun browser game, entirely wri
 It will have nice sprites, animations and even simple physics.
 
 ## State of the game
-<span style="color:#FF5733">**ALPHA**</span>
+<span style="color:#FF5733">**BETA**</span>
 
-Currently there is a very basic version of the game.
-You can open it and maybe move things around but there is very limited actual gameplay right now.
-You can try to move the eggs and also bully the enemies as they try to reach the left side of the map.
+This game is all about the blue bull and his quest to save it's hatchlings. The player must push the eggs into the safe forrest because the open fields are roamed by some hungry green watcher frogs. When larvas are hatching from the eggs, they will getting eaten soon by them.
+The player must prevent that by carefuly pushing the eggs (and fastly pushing the larvas) to the save forrest.
 
-The next state will be the **BETA** state. Here you can expect basic gameplay (limited to core principles and with lots of bugs) for the first time.
+The next state will be the **RELEASE 1.0** state. Here you can expect extended gameplay and a lot more animations.
 
 **Expect new features**
 - Larvas will hatch from eggs!
@@ -21,7 +20,16 @@ You can expect this happen in march 2023. Stay tuned!
 
 ## Changelog
 
-**Updates 06.03.2023**
+**Updates 06.03.2023 BETA RELEASE**
+
+![mushroom Image](./src/orange_mushroom.png) 
+
+- Beta release is here!
+- You can win (& lose!) the game and restart it
+- All the gameplay in implemented:
+    - You can push eggs, larvas end enemies
+    - Enemies will try to eat your larvas on contact
+    - You will win the game after saving certain larvas and lose it when you let to much of them getting eaten by the enemies
 - More green watcher enemies are coming to the forrest and thus more variations of them should be visible to the player!
 
 **Updates 05.03.2023**

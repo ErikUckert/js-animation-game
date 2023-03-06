@@ -306,7 +306,7 @@ window.addEventListener('load', function(){
                 }
             }
             // collision handling (objects)
-            let collisionObjects = [this.game.player, ...this.game.obstacles];
+            let collisionObjects = [this.game.player, ...this.game.obstacles, ...this.game.eggs];
             collisionObjects.forEach(object => {
                 let [collision, distance, sumOfRadii, dx, dy] = this.game.checkCollision(this, object);
                 if (collision) {
@@ -318,7 +318,7 @@ window.addEventListener('load', function(){
             })
             // collision handling (enemies)
             this.game.enemies.forEach(enemy =>{
-                if (this.game.checkCollision(this, enemy)[0]) {
+                if (this.game.checkCollision(this, enemy)[0] && !this.game.gameOver) {
                     this.markedForDeletion = true;
                     this.game.removeGameObjects();
                     this.game.lostHatchlings++;
