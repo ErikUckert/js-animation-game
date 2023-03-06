@@ -21,6 +21,9 @@ You can expect this happen in march 2023. Stay tuned!
 
 ## Changelog
 
+**Updates 06.03.2023**
+- More green watcher enemies are coming to the forrest and thus more variations of them should be visible to the player!
+
 **Updates 05.03.2023**
 - Particle effects are added, when a larva is eaten by the green watcher enemies
 
