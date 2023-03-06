@@ -7,7 +7,7 @@ window.addEventListener('load', function(){
     ctx.fillStyle = 'white';
     ctx.lineWidth = 3;
     ctx.strokeStyle = 'black';
-    ctx.font = '40px Helvetica';
+    ctx.font = '40px Bangers';
     ctx.textAlign = 'center';
 
     class Player {
@@ -237,7 +237,7 @@ window.addEventListener('load', function(){
             this.spriteX = this.collisionX - this.width * 0.5;
             this.spriteY = this.collisionY - this.height * 0.5 - 100;
             this.collisionX -= this.speedX;
-            if (this.spriteX + this.width < 0) {
+            if (this.spriteX + this.width < 0 && !this.game.gameOver) {
                 this.collisionX = this.game.width + this.width + Math.random() * this.game.width * 0.5;
                 this.collisionY = this.game.topMargin + (Math.random() * (this.game.height - this.game.topMargin));
                 this.frameY = Math.floor(Math.random() * 4)
@@ -292,7 +292,9 @@ window.addEventListener('load', function(){
             if (this.collisionY < this.game.topMargin) {
                 this.markedForDeletion = true;
                 this.game.removeGameObjects();
-                this.game.score++;
+                if (!this.game.gameOver) {
+                    this.game.score++;
+                } 
                 for (let index = 0; index < 3; index++) {
                     this.game.particles.push(new Firefly(this.game, this.collisionX, this.collisionY, 'yellow'));
                 }
@@ -395,7 +397,8 @@ window.addEventListener('load', function(){
             this.hatchlings = [];
             this.enemies = [];
             this.maxEnemies = 5;
-            this.winningScore = 5;
+            this.winningScore = 1;
+            this.gameOver = false;
             this.mouse = {
                 x: this.width * 0.5,
                 y: this.height * 0.5,
@@ -446,7 +449,7 @@ window.addEventListener('load', function(){
             this.timer += deltaTime;
 
             // add some eggs periodically´
-            if (this.eggTimer > this.eggInterval && this.eggs.length < this.maxEggs) {
+            if (this.eggTimer > this.eggInterval && this.eggs.length < this.maxEggs && !this.gameOver) {
                 this.addEgg();
                 this.eggTimer = 0;
             }
@@ -461,6 +464,37 @@ window.addEventListener('load', function(){
                 context.fillText('Lost Hatchlings' + ' ' + this.lostHatchlings, 25, 100);
             }
             context.restore();
+            // win / lose message
+            if (this.score >= this.winningScore) {
+                this.gameOver = true;
+                context.save();
+                context.fillStyle = 'rgba(0,0,0,0.5)';
+                context.fillRect(0, 0, this.width, this.height);
+                context.fillStyle = 'white';
+                context.textAlign = 'center';
+                context.shadowOffsetX = 4;
+                context.shadowOffsetY = 4;
+                context.shadowColor = 'black';
+                let message1;
+                let message2;
+                if (this.lostHatchlings <= 5) {
+                    //winning
+                    message1 = 'You WIN!'
+                    message2 = 'Great leader of your kind...'
+                } else {
+                    //losing
+                    message1 = 'Survivor...'
+                    message2 = 'You protected your kind...some of them at least...'
+                }
+                context.font = '130px Bangers';
+                context.fillText(message1, this.width * 0.5, this.height * 0.5);
+                context.font = '40px Bangers';
+                context.fillText(message2, this.width * 0.5, this.height * 0.5 + 100);
+                context.fillText('Final Score' + ' ' + this.score, this.width * 0.5, this.height * 0.5 + 150);
+                context.fillText('Press R to play again', this.width * 0.5, this.height * 0.5 + 200);
+                context.restore();
+            }
+
         };
         checkCollision(a, b){
             const dx = a.collisionX - b.collisionX;
