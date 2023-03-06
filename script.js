@@ -159,7 +159,7 @@ window.addEventListener('load', function(){
             this.spriteX;
             this.spriteY;
             this.hatchTimer = 0;
-            this.hatchIntervall = 3000;
+            this.hatchIntervall = 10000;
             this.markedForDeletion = false;
         };
         draw(context){
@@ -193,7 +193,7 @@ window.addEventListener('load', function(){
                 }
             })
             //hatching handling
-            if (this.hatchTimer > this.hatchIntervall) {
+            if (this.hatchTimer > this.hatchIntervall || this.collisionY < this.game.topMargin) {
                 this.game.hatchlings.push(new Larva(this.game, this.collisionX, this.collisionY));
                 this.markedForDeletion = true;
                 this.game.removeGameObjects();
