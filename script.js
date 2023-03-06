@@ -403,7 +403,7 @@ window.addEventListener('load', function(){
             this.hatchlings = [];
             this.enemies = [];
             this.maxEnemies = 5;
-            this.winningScore = 1;
+            this.winningScore = 20;
             this.gameOver = false;
             this.mouse = {
                 x: this.width * 0.5,
