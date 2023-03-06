@@ -124,7 +124,7 @@ window.addEventListener('load', function(){
             this.spriteX = this.collisionX - this.width * 0.5;
             this.spriteY = this.collisionY - this.height * 0.5 - 70;
             this.frameX = Math.floor(Math.random() * 4);
-            this.frameY = Math.floor(Math.random() * 3)
+            this.frameY = Math.floor(Math.random() * 3);
         };
         draw(context){
             // drawing the obstacle sprite from the sprite sheet
@@ -207,7 +207,7 @@ window.addEventListener('load', function(){
             this.game = game;
             this.collisionRadius = 30;
             this.speedX = Math.random() * 3 + 0.5;
-            this.image = document.getElementById('enemy');
+            this.image = document.getElementById('toads');
             this.spriteHeight = 260;
             this.spriteWidth = 140;
             this.width = this.spriteWidth;
@@ -216,9 +216,12 @@ window.addEventListener('load', function(){
             this.collisionY = this.game.topMargin + (Math.random() * (this.game.height - this.game.topMargin));
             this.spriteX;
             this.spriteY;
+            this.frameX = 0;
+            this.frameY = Math.floor(Math.random() * 4)
         };
         draw(context){
-            context.drawImage(this.image, this.spriteX, this.spriteY);
+            // drawing the obstacle sprite from the sprite sheet
+            context.drawImage(this.image, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.spriteX, this.spriteY, this.width, this.height);
             // code for drawing the circle
             if (this.game.debug == true) {
                 context.beginPath();
@@ -237,6 +240,7 @@ window.addEventListener('load', function(){
             if (this.spriteX + this.width < 0) {
                 this.collisionX = this.game.width + this.width + Math.random() * this.game.width * 0.5;
                 this.collisionY = this.game.topMargin + (Math.random() * (this.game.height - this.game.topMargin));
+                this.frameY = Math.floor(Math.random() * 4)
             }
             let collisionObjects = [this.game.player, ...this.game.obstacles];
             collisionObjects.forEach(object => {
@@ -386,10 +390,12 @@ window.addEventListener('load', function(){
             this.obstacles = [];
             this.eggTimer = 0;
             this.eggInterval = 1000;
-            this.maxEggs = 10;
+            this.maxEggs = 5;
             this.eggs = [];
             this.hatchlings = [];
             this.enemies = [];
+            this.maxEnemies = 5;
+            this.winningScore = 5;
             this.mouse = {
                 x: this.width * 0.5,
                 y: this.height * 0.5,
@@ -476,7 +482,7 @@ window.addEventListener('load', function(){
         }
         init(){
             // init the enemies
-            for (let index = 0; index < 3; index++) {
+            for (let index = 0; index < this.maxEnemies; index++) {
                 this.addEnemy();
                 
             }
