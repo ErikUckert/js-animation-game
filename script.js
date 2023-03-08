@@ -385,7 +385,7 @@ window.addEventListener('load', function(){
             this.topMargin = 260;
             this.bottomMargin = 50;
             this.pathMargin = 60;
-            this.debug = true;
+            this.debug = false;
             this.fps = 70;
             this.timer = 0;
             this.score = 0;
