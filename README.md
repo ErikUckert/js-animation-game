@@ -4,6 +4,9 @@
 This repository containes the code for a nice and fun browser game, entirely written in javascript.
 It will have nice sprites, animations and even simple physics.
 
+## How to run this game
+Just try it [online](https://erikuckert.github.io/js-animation-game/) or clone to your local drive and open the [index.html](index.html) with your webbrowser.
+
 ## State of the game
 <span style="color:#FF5733">**BETA**</span>
 
@@ -76,8 +79,6 @@ You can expect this happen in march 2023. Stay tuned!
 - basic collision detection between player and obstacles and display a collision to the js console
 - simulate basic physics by making obstacles solid and let player move around them automaticaly instead of crossing them
 
-## How to run this game
-Just try it [online](https://erikuckert.github.io/js-animation-game/) or clone to your local drive and open the [index.html](index.html) with your webbrowser.
 
 ## Credits
 This game is based on the awesome work of [Frantisek Dvorak](https://www.youtube.com/@Frankslaboratory/featured).
